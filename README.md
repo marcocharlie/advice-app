@@ -13,7 +13,7 @@ In addition, a Redis local cache is implemented, data is refreshed every 5 minut
 
 **N.B.** The commands refer to bash and Make files, so please be sure you have bash installed on your machine and you can use `Make`.
 
-### Run Api
+### Run App
 To start the application, run:
 ```bash
 make start-api
@@ -27,11 +27,11 @@ The web server will listen on port 5000.
 
 ### Debugging
 
-You can run the debug of the applications by using the Debug panel in VSCode.
+You can run the debug of the application by using the Debug panel in VSCode.
 
 ### Available endpoints
 
-The app offers an HTTP `POST` `/api/advice` endpoint which returns a list of advices from [Advices Slip API](https://api.adviceslip.com/) for a given topic and maximum amount.
+The JSON RPC server offers an HTTP `POST` `/api/advice` endpoint and a `RPCService.GiveMeAdvice` method which returns a list of advices from [Advices Slip API](https://api.adviceslip.com/) for a given topic and maximum amount.
 
 #### Parameters:
 - `topic` (string, mandatory): a topic for which is wanted to get advice.
@@ -51,7 +51,7 @@ make test-api
 ## Application structure
 The application is structured as follows:
 
-- api (Go JSON-RPC application):
+- api (backend Go JSON-RPC application):
     - adapter: contains the logic for external web comunication (retrieving advices list from the external source).
     - cmd: contains the entrypoints of the main application and the logic to expose information on differents channels (JSON-RPC, REST, ...).
     - config: contains the default configuration file.
