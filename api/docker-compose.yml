@@ -1,0 +1,19 @@
+version: "2"
+
+services:
+    app:
+        build: 
+            context: .
+            dockerfile: Dockerfile
+        container_name: advice-app
+        ports:
+            - 5000:5000
+        environment:
+            REDIS_ADDRESS: redis:6379
+        links: 
+            - db
+    db:
+        image: redis
+        container_name: redis
+        ports:
+            - 6379:6379
