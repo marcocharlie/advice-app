@@ -1,0 +1,28 @@
+POST http://localhost:5000/rpc HTTP/1.1
+Content-Type: application/json
+Accept-Language: it-IT,it;q=0.8,en-US
+
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "RPCService.GiveMeAdvice",
+  "params": {
+    "topic": "cars"
+  }
+}
+
+########
+
+POST http://localhost:5000/rpc HTTP/1.1
+Content-Type: application/json
+Accept-Language: it-IT,it;q=0.8,en-US
+
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "RPCService.GiveMeAdvice",
+  "params": {
+    "topic": "love",
+    "amount": 3
+  }
+}
