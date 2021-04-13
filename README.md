@@ -53,7 +53,7 @@ The application is structured as follows:
 
 - api (backend Go JSON-RPC application):
     - adapter: contains the logic for external web comunication (retrieving advices list from the external source).
-    - cmd: contains the entrypoints of the main application and the logic to expose information on differents channels (JSON-RPC, REST, ...).
+    - cmd: contains the entrypoints of the main application and the logic to expose information on a JSON-RPC channel.
     - config: contains the default configuration file.
     - data: contains the logic to retrieve data from database (Redis).
     - internal: contains the internal logic.
