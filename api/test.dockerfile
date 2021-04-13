@@ -5,7 +5,7 @@ RUN apk add git
 
 WORKDIR /go/src/app
 
-COPY ./api .
+COPY . .
 
 RUN go mod download
 

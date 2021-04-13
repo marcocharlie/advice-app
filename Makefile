@@ -1,6 +1,5 @@
 test-api:
-	docker build --tag jsonrpctest . -f ./api/test.dockerfile
-	docker run --rm jsonrpctest:latest
+	docker-compose -f ./api/docker-compose.test.yml up --build --abort-on-container-exit
 
 start-api:
 	docker-compose -f ./api/docker-compose.yml up --build --force-recreate -d
