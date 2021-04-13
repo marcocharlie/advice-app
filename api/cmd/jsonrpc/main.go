@@ -31,7 +31,7 @@ func main() {
 
 	// prepare an HTTP Router, pointing the /rpc url to the RPC Server
 	r := mux.NewRouter()
-	r.Handle("/rpc", s)
+	r.Handle("/api/advice", s)
 
 	// start HTTP server on port 5000
 	log.Fatal(http.ListenAndServe(":5000", r))
