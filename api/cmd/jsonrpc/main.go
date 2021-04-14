@@ -29,7 +29,7 @@ func main() {
 	rpcService := NewRPCService(redisClient)
 	s.RegisterService(rpcService, "RPCService")
 
-	// prepare an HTTP Router, pointing the /rpc url to the RPC Server
+	// prepare an HTTP Router, pointing the /api/advice url to the RPC Server
 	r := mux.NewRouter()
 	r.Handle("/api/advice", s)
 
