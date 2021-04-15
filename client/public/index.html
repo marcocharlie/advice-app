@@ -54,6 +54,60 @@
     <script src="advice.js"></script>
 </head>
 
+<script>
+
+    $(document).ready(function () {
+        $("#submitQuery").on("click", function () { fetchAdviceApi(topic.value, amount.value); })
+    }
+    )
+
+    const apiBasePathUrl = "http://localhost:5000/api/advice"
+
+    // fetchAdviceApi makes a POST requets to backend
+    // and provides data to index.html
+    function fetchAdviceApi(topic, amount) {
+
+        var inputData = {
+            id: 1,
+            jsonrpc: "2.0",
+            method: "RPCService.GiveMeAdvice",
+            params: {
+                "topic": topic,
+                "amount": parseInt(amount)
+            }
+        }
+
+        fetch(apiBasePathUrl, {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            body: JSON.stringify(inputData),
+            dataType: 'json',
+        }).then(response => response.json())
+            .then(data => {
+                if (data.result != null) {
+                    console.log('Success:', data);
+                    var myObject = data.result.adviceList
+                    var parsed = "";
+                    for (i = 0; i < myObject.length; i++) {
+                        var myobj = myObject[i];
+                        parsed += (i + 1 + " : " + myobj + "\n\n");
+                    }
+                    $("#display").val(parsed);
+                } else {
+                    console.error('Error:', data.error.message);
+                    confirm("An error occurred:\n\n" + data.error.message)
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                confirm("An error occurred:\n\n" + error)
+            });
+    }
+</script>
+
 <body>
     <center>
         <h1>Welcome to Advice App!</h1>
@@ -73,7 +127,7 @@
                 </div>
                 <br />
                 <br />
-                <div><button onclick="fetchAdviceApi(topic.value, amount.value)">Submit</button>
+                <div><button id="submitQuery" type="button">Submit</button>
                 </div>
                 <br />
                 <br />

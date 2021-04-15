@@ -1,45 +1,17 @@
+const fetch = require('node-fetch');
+const PORT = 8080;
 
-function fetchAdviceApi(topic, amount) {
+var http = require('http');
+var fs = require('fs');
 
-    let apiBasePathUrl = "http://localhost:5000/api/advice"
+// init http server
+fs.readFile('./index.html', function (err, html) {
 
-    var inputData = {
-        id: 1,
-        jsonrpc: "2.0",
-        method: "RPCService.GiveMeAdvice",
-        params: {
-            "topic": topic,
-            "amount": parseInt(amount)
-        }
-    }
+    if (err) throw err;
 
-    console.log(inputData)
-
-    fetch(apiBasePathUrl, {
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        method: 'POST',
-        body: JSON.stringify(inputData),
-        dataType: 'json',
-    }).then(response => response.json())
-        .then(data => {
-            if (data.result != null) {
-                console.log('Success:', data);
-                var myObject = data.result.adviceList
-                var parsed = "";
-                for (i = 0; i < myObject.length; i++) {
-                    var myobj = myObject[i];
-                    parsed += (i + 1 + " : " + myobj + "\n\n");
-                }
-                $("#display").val(parsed);
-            } else {
-                confirm("An error occurred:\n\n" + data.error.message)
-            }
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-            confirm("An error occurred:\n\n" + error)
-        });
-}
+    http.createServer(function (request, response) {
+        response.writeHeader(200, { "Content-Type": "text/html" });
+        response.write(html);
+        response.end();
+    }).listen(PORT);
+});
