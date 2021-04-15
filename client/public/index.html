@@ -3,10 +3,18 @@
 
 <head>
 
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/17137938?s=400&v=4">
+
     <style>
         h1 {
             color: black;
             font-size: 40px;
+            font-family: verdana;
+        }
+
+        h2 {
+            color: black;
+            font-size: 30px;
             font-family: verdana;
         }
 
@@ -45,6 +53,10 @@
     <center>
         <h1>Welcome to Advice App!</h1>
         <br />
+        <div>
+            <link href="https://github.com/marcocharlie/advice-app" rel="stylesheet">
+        </div>
+        <br />
         <div><label for="topic">Please, insert a topic for which you want to get advice:</label>
             <input type="text" id="topic" topic="topic">
             <div>
@@ -56,17 +68,17 @@
                 </div>
                 <br />
                 <br />
-                <div><button onclick="giveMeAdvices(topic.value, amount.value)">Submit</button>
+                <div><button onclick="fetchAdviceApi(topic.value, amount.value)">Submit</button>
                 </div>
                 <br />
                 <br />
                 <br />
-                <div><label for="advices">Advices:</label>
-                </div>
-                <div>
-                    <br />
-                    <textarea id="display"></textarea>
-                </div>
+                <h2>Advices:</h2>
+            </div>
+            <div>
+                <br />
+                <textarea id="display"></textarea>
+            </div>
     </center>
 </body>
 
