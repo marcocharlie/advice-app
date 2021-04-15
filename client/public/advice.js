@@ -1,7 +1,7 @@
 
-function giveMeAdvices(topic, amount) {
+function fetchAdviceApi(topic, amount) {
 
-    let apiUrl = "http://localhost:5000/api/advice"
+    let apiBasePathUrl = "http://localhost:5000/api/advice"
 
     var inputData = {
         id: 1,
@@ -15,7 +15,7 @@ function giveMeAdvices(topic, amount) {
 
     console.log(inputData)
 
-    fetch(apiUrl, {
+    fetch(apiBasePathUrl, {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
