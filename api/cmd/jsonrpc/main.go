@@ -34,7 +34,7 @@ func main() {
 	r := mux.NewRouter()
 	r.Handle("/api/advice", s)
 
-	// enable cors
+	// enable cors (allow cross origin requests to be served, only for development purpose)
 	headersOk := handlers.AllowedHeaders([]string{"Accept", "Accept-Language", "Content-Language", "Content-Type"})
 	originsOk := handlers.AllowedOrigins([]string{"*"})
 	methodsOk := handlers.AllowedMethods([]string{"POST"})
