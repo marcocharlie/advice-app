@@ -1,10 +1,15 @@
+const dotenv = require('dotenv');
+dotenv.config();
+
 const fetch = require('node-fetch');
 const PORT = 8080;
 
 var http = require('http');
 var fs = require('fs');
 
-// init http server
+var apiBasePathUrl = process.env.API_BASE_PATH_URL;
+
+// create http server
 fs.readFile('./index.html', function (err, html) {
 
     if (err) throw err;

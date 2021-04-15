@@ -4,6 +4,7 @@
 <head>
 
     <link rel="icon" href="https://avatars.githubusercontent.com/u/17137938?s=400&v=4">
+    <title>Advice App</title>
 
     <style>
         h1 {
@@ -49,22 +50,18 @@
         }
     </style>
 
-    <title>Advice App</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="advice.js"></script>
 </head>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type=module src="client.js"></script>
 <script>
 
-    $(document).ready(function () {
-        $("#submitQuery").on("click", function () { fetchAdviceApi(topic.value, amount.value); })
-    }
-    )
+    $(document).ready(function () { $("#submitRequest").on("click", function () { fetchAdviceApi(topic.value, amount.value); }) })
 
     const apiBasePathUrl = "http://localhost:5000/api/advice"
+    //console.log(apiBasePathUrl)
 
-    // fetchAdviceApi makes a POST requets to backend
-    // and provides data to index.html
+    // fetchAdviceApi makes a POST request to api server
     function fetchAdviceApi(topic, amount) {
 
         var inputData = {
@@ -127,7 +124,7 @@
                 </div>
                 <br />
                 <br />
-                <div><button id="submitQuery" type="button">Submit</button>
+                <div><button id="submitRequest" type="button">Submit</button>
                 </div>
                 <br />
                 <br />
