@@ -8,7 +8,7 @@ import (
 	"github.com/marcocharlie/advice-app/api/config"
 )
 
-//AdvicesMemory implements the Advices interface using local in memory persistance
+//AdvicesMemory implements the Advice interface using local in memory persistance
 type AdvicesCache struct {
 	redisClient *redis.Client
 }
@@ -40,9 +40,9 @@ func (ac *AdvicesCache) GetTopicAdvicesCache(topic string) ([]string, error) {
 
 }
 
-func (ac *AdvicesCache) SetTopicAdvicesCache(topic string, advices []string) error {
+func (ac *AdvicesCache) SetTopicAdvicesCache(topic string, advice []string) error {
 
-	json, err := json.Marshal(advices)
+	json, err := json.Marshal(advice)
 	if err != nil {
 		return err
 	}

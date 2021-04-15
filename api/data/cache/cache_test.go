@@ -8,7 +8,7 @@ import (
 )
 
 func TestAdvicesCache(t *testing.T) {
-	var advices []string
+	var advice []string
 	var topic string
 
 	redisClient := redis.NewClient(&redis.Options{
@@ -23,34 +23,34 @@ func TestAdvicesCache(t *testing.T) {
 
 	topic = "someTopic"
 
-	//Empty advices
-	advicesCache.SetTopicAdvicesCache(topic, advices)
+	//Empty advice
+	advicesCache.SetTopicAdvicesCache(topic, advice)
 
-	//Assert advices are empty
-	advices, err := advicesCache.GetTopicAdvicesCache(topic)
+	//Assert advice are empty
+	advice, err := advicesCache.GetTopicAdvicesCache(topic)
 	if err != nil {
 		t.Fatal(err)
 	}
-	if len(advices) != 0 {
+	if len(advice) != 0 {
 		t.Fatal("Cache is not empty")
 	}
 
-	//Insert test data into advices
-	advices = []string{
+	//Insert test data into advice
+	advice = []string{
 		"advice n. 1",
 		"advice n. 22",
 		"advice n. 3",
 	}
 
-	advicesCache.SetTopicAdvicesCache(topic, advices)
+	advicesCache.SetTopicAdvicesCache(topic, advice)
 
 	//Assert correct number of advices is present
-	advices, err = advicesCache.GetTopicAdvicesCache(topic)
+	advice, err = advicesCache.GetTopicAdvicesCache(topic)
 	if err != nil {
 		t.Fatal(err)
 	}
-	if len(advices) != 3 {
-		t.Fatal("Cannot retrieve advices from cache")
+	if len(advice) != 3 {
+		t.Fatal("Cannot retrieve advice from cache")
 	}
 
 }

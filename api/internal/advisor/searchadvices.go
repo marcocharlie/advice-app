@@ -28,7 +28,7 @@ func GetAdvice(redisClient *redis.Client, adviceRequest *models.AdviceRequestArg
 		return nil, err
 	}
 
-	// get topic advices from local cache, if present
+	// get topic advice from local cache, if present
 	adviceList, err = advicesCache.GetTopicAdvicesCache(adviceRequest.Topic)
 	if err != nil {
 		if err == redis.Nil {
@@ -41,18 +41,18 @@ func GetAdvice(redisClient *redis.Client, adviceRequest *models.AdviceRequestArg
 
 	// if there is not cache for given topic
 	if !existsTopicAdviceCache {
-		// searches for advices
-		advices, err := adviceslip.SearchAdviceSlips(adviceRequest.Topic)
+		// searches for advice
+		advice, err := adviceslip.SearchAdviceSlips(adviceRequest.Topic)
 		if err != nil {
 			return nil, err
 		}
 
-		// lists advices
-		for _, advice := range *advices {
+		// lists advice
+		for _, advice := range *advice {
 			adviceList = append(adviceList, advice.Advice)
 		}
 
-		// saves topic advices to local cache
+		// saves topic advice to local cache
 		err = advicesCache.SetTopicAdvicesCache(adviceRequest.Topic, adviceList)
 		if err != nil {
 			log.Print("setTopicAdvicesCache method errored with: ", err)
@@ -69,7 +69,7 @@ func GetAdvice(redisClient *redis.Client, adviceRequest *models.AdviceRequestArg
 	}
 
 	adviceResponse.AdviceList = adviceList
-	// limit advices
+	// limit advice
 	if adviceMaxAmount > 0 && len(adviceList) >= adviceMaxAmount {
 		adviceResponse.AdviceList = adviceList[:adviceMaxAmount]
 	}

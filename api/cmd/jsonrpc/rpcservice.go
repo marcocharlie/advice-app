@@ -9,7 +9,7 @@ import (
 	"github.com/marcocharlie/advice-app/api/models"
 )
 
-// RPCService provides some RPC methods useful to get advices
+// RPCService provides some RPC methods useful to get advice
 type RPCService struct {
 	redisCLient *redis.Client
 }
@@ -25,12 +25,12 @@ func NewRPCService(redisClient *redis.Client) *RPCService {
 func (s *RPCService) GiveMeAdvice(r *http.Request, args *models.AdviceRequestArgs, reply *models.AdviceResponse) error {
 	log.Printf("got GiveMeAdvice request from %s\n", r.RemoteAddr)
 
-	advices, err := advisor.GetAdvice(s.redisCLient, args)
+	advice, err := advisor.GetAdvice(s.redisCLient, args)
 	if err != nil {
 		log.Println(err)
 		return err
 	}
-	*reply = *advices
+	*reply = *advice
 
 	return nil
 }

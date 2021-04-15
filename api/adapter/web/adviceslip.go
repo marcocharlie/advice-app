@@ -23,7 +23,7 @@ type Slip struct {
 	Date   string `json:"date"`
 }
 
-// searchAdviceSlips searches for advices based on topic
+// searchAdviceSlips searches for advice based on topic
 func SearchAdviceSlips(topic string) (*[]Slip, error) {
 
 	var sleep int = 1
@@ -31,12 +31,12 @@ func SearchAdviceSlips(topic string) (*[]Slip, error) {
 	var adviceSlipResponse AdviceSlipResponse
 
 	searchURL := fmt.Sprintf("%s%s", config.AdviceSlipBaseURL, topic)
-	log.Printf("searching advices for topic: %s", topic)
+	log.Printf("searching advice for topic: %s", topic)
 
 	for {
 		res, err := http.Get(searchURL)
 		if err != nil {
-			log.Printf("searching advices failed, retrying after %d seconds\n", sleep)
+			log.Printf("searching advice failed, retrying after %d seconds\n", sleep)
 			sleep++
 			if sleep > 5 {
 				return nil, err
