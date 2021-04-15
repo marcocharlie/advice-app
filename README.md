@@ -1,8 +1,10 @@
 # advice-app
 A simple server application showing Go implementation of JSON-RPC 2.0.
+
 A light Node Js client for API consumption is implemented.
 
 In particular, the application retrieves advice about a given topic through [Advice Slip API](https://api.adviceslip.com/).
+
 In addition, a Redis local cache is implemented, data is refreshed every 5 minutes.
 
 ## Usage
