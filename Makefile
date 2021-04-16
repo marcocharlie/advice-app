@@ -1,14 +1,14 @@
-test-api:
+test-backend:
 	docker-compose -f ./api/docker-compose.test.yml up --build --abort-on-container-exit
 
-start-api:
+start-backend:
 	docker-compose -f ./api/docker-compose.yml up --build --force-recreate -d
 
-stop-api:
+stop-backend:
 	docker-compose -f ./api/docker-compose.yml stop
 
-start-client:
+start-frontend:
 	docker-compose -f ./app/docker-compose.yml up --build --force-recreate -d
 
-stop-client:
+stop-frontend:
 	docker-compose -f ./app/docker-compose.yml stop

@@ -16,12 +16,12 @@ Docker and `make` is all you need to run both api server and client.
 ### Run Server
 To start the application, run:
 ```bash
-make start-api
+make start-backend
 ```
 
 The command will download Go and Redis images, get the dependencies, build the application and run it (in background).
 
-To stop the application just run `make stop-api`.
+To stop the application just run `make stop-backend`.
 
 The web server will listen on port 5000.
 
@@ -29,7 +29,7 @@ The web server will listen on port 5000.
 
 To test the application, run:
 ```bash
-make test-api
+make test-backend
 ```
 
 #### Debugging
@@ -51,14 +51,14 @@ The [examples](https://github.com/marcocharlie/advice-app/tree/master/api/docs/e
 ### Run Client
 To start the application, run:
 ```bash
-make start-client
+make start-frontend
 ```
 
 The command will download Node Js image, get the dependencies, build the application and run it (in background).
 
 Once the app starts, open `http://localhost:8080` in your browser, where you will be able to make requests to backend server.
 
-To stop the application just run `make stop-client`.
+To stop the application just run `make stop-frontend`.
 
 ## Application structure
 
