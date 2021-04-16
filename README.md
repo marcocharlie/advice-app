@@ -79,4 +79,4 @@ The application is structured as follows:
     - bin: stores the application entry point `/bin/www` which sets up some error handling and then loads `app.js` to do the rest of the work. 
     - routes: stores the app routes.
     - views: containns the templates. 
-    - public: contains the `.css` and other util files
+    - public: contains the `.css` and other useful files
