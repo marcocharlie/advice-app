@@ -58,7 +58,6 @@
     $(document).ready(function () { $("#submitRequest").on("click", function () { fetchAdviceApi(topic.value, amount.value); }) })
 
     const apiBasePathUrl = "http://localhost:5000/api/advice"
-    //console.log(apiBasePathUrl)
 
     // fetchAdviceApi makes a POST request to api server
     function fetchAdviceApi(topic, amount) {
