@@ -7,9 +7,9 @@
         "type": "git",
         "url": "git+https://github.com/marcocharlie/advice-app.git"
     },
-    "main": "client.js",
+    "main": "index.js",
     "scripts": {
-        "start": "node client.js"
+        "start": "node index.js"
     },
     "dependencies": {
         "dotenv": "^8.2.0",
