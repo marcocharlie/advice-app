@@ -8,7 +8,7 @@ stop-api:
 	docker-compose -f ./api/docker-compose.yml stop
 
 start-client:
-	docker-compose -f ./client/docker-compose.yml up --build --force-recreate -d
+	docker-compose -f ./app/docker-compose.yml up --build --force-recreate -d
 
 stop-client:
-	docker-compose -f ./client/docker-compose.yml stop
+	docker-compose -f ./app/docker-compose.yml stop
