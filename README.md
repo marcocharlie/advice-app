@@ -1,5 +1,5 @@
 # advice-app
-A simple backend server application showing Go implementation of JSON-RPC 2.0. A light frontend Node Js app client for API consumption is offered.
+A simple backend application showing Go implementation of JSON-RPC 2.0. A light frontend Node Js application for API consumption is offered.
 
 In addition, a Redis local cache is implemented, data is refreshed every 5 minutes.
 
@@ -11,9 +11,9 @@ In particular, the application retrieves advice about a given topic through [Adv
 
 In order to simplify the execution, a convenient Makefile is provided.
 
-Docker and `make` is all you need to run both api server and client.
+Docker and `make` is all you need to run both backend and frontend apps.
 
-### Run Server
+### Run Backend
 To start the application, run:
 ```bash
 make start-backend
@@ -48,7 +48,7 @@ The JSON RPC server offers an HTTP `POST` `/api/advice` endpoint and a `RPCServi
 
 The [examples](https://github.com/marcocharlie/advice-app/tree/master/api/docs/examples) folder provides a REST file as example. It is meant to be used on [VSCode](https://code.visualstudio.com/) [REST Client plugin](https://github.com/Huachao/vscode-restclient).
 
-### Run Client
+### Run Frontend
 To start the application, run:
 ```bash
 make start-frontend
