@@ -56,7 +56,7 @@ make start-frontend
 
 The command will download Node Js image, get the dependencies, build the application and run it (in background).
 
-Once the app starts, open `http://localhost:8080` in your browser, where you will be able to make requests to backend server.
+Once the app starts, open `http://localhost:8080` in your browser, where you will be able to make requests to backend server (suggested quaries: `life`,`love`,`cars`,`spiders`,`wine`,`lover`,`smile`).
 
 To stop the application just run `make stop-frontend`.
 
