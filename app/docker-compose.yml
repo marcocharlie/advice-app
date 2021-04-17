@@ -9,4 +9,11 @@ services:
         ports:
             - "8080:8080"
         environment:
-            API_BASE_PATH_URL: http://localhost:5000/api/advice
+            API_BASE_URL_PATH: http://172.16.238.10:5000/api/advice
+            PORT: 8080
+        networks:
+            - api_advice-app-net
+
+networks:
+    api_advice-app-net:
+        external: true
