@@ -17,8 +17,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json({ limit: '1mb' }));
 
+// home page route
 app.use('/', indexRouter);
+// api route
+app.use('/api', indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

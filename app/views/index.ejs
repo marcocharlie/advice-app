@@ -9,57 +9,6 @@
 
 </head>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script>
-
-  $(document).ready(function () { $("#submitRequest").on("click", function () { fetchAdviceApi(topic.value, amount.value); }) })
-
-  const apiBasePathUrl = "http://localhost:5000/api/advice"
-
-  // fetchAdviceApi makes a POST request to api server
-  function fetchAdviceApi(topic, amount) {
-
-    var inputData = {
-      id: 1,
-      jsonrpc: "2.0",
-      method: "RPCService.GiveMeAdvice",
-      params: {
-        "topic": topic,
-        "amount": parseInt(amount)
-      }
-    }
-
-    fetch(apiBasePathUrl, {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: 'POST',
-      body: JSON.stringify(inputData),
-      dataType: 'json',
-    }).then(response => response.json())
-      .then(data => {
-        if (data.result != null) {
-          console.log('Success:', data);
-          var myObject = data.result.adviceList
-          var parsed = "";
-          for (i = 0; i < myObject.length; i++) {
-            var myobj = myObject[i];
-            parsed += (i + 1 + " : " + myobj + "\n\n");
-          }
-          $("#display").val(parsed);
-        } else {
-          console.error('Error:', data.error.message);
-          confirm("An error occurred:\n\n" + data.error.message)
-        }
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-        confirm("An error occurred:\n\n" + error)
-      });
-  }
-</script>
-
 <body>
   <center>
     <h1>Welcome to Advice App!</h1>
@@ -69,17 +18,18 @@
     <br />
     <br />
     <div><label for="topic">Please, insert a topic for which you want to get advice:</label>
-      <input type="text" id="topic" topic="topic">
+      <input type="text" id="topic">
       <div>
         <br />
         <br />
-        <div><label for="amount">If you want, insert the maximum amount of advice to
-            receive:</label>
-          <input id="amount" type="number" min="1" max="100" amount="amount">
+        <div><label for="amount">If you want, insert the maximum amount of advice to receive:</label>
+          <input id="amount" type="number" min="1" max="100">
         </div>
         <br />
         <br />
-        <div><button id="submitRequest" type="button">Submit</button>
+
+        <div>
+          <button id="submitRequest" type="button" onclick="">Submit</button>
         </div>
         <br />
         <br />
@@ -92,5 +42,42 @@
       </div>
   </center>
 </body>
+
+
+<script>
+
+  // submit request to server on click event
+  document.getElementById('submitRequest').addEventListener('click', async event => {
+    var topic = document.getElementById('topic').value;
+    var amount = document.getElementById('amount').value;
+
+    const data = { topic, amount };
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+    // POST to server
+    const response = await fetch('/api', options);
+    // receive advice from server
+    const json = await response.json();
+    console.log(json);
+    if (json.result != null) {
+      const advice = json.result.adviceList
+      var parsed = "";
+      for (i = 0; i < advice.length; i++) {
+        parsed += (i + 1 + " : " + advice[i] + "\n\n");
+      }
+      document.getElementById('display').value = parsed
+    } else {
+      confirm("An error occurred:\n\n" + json.error.message)
+    }
+  })
+
+</script>
+
+
 
 </html>
