@@ -17,11 +17,6 @@ router.get('/', function (req, res, next) {
 router.post('/api', async (request, response) => {
 
   const data = request.body
-  //const params = response.json({
-  //  status: "success",
-  //  topic: data.topic,
-  //  amount: data.amount
-  //});
   const topic = data.topic
   const amount = data.amount
 

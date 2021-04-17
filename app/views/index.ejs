@@ -63,7 +63,6 @@
     const response = await fetch('/api', options);
     // receive advice from server
     const json = await response.json();
-    console.log(json);
     if (json.result != null) {
       const advice = json.result.adviceList
       var parsed = "";
