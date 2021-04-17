@@ -2,7 +2,7 @@
   "name": "advice-app-frontend",
   "version": "0.0.0",
   "private": true,
-  "description": "Advice App Client",
+  "description": "Advice App Frontend",
   "author": "Marco Carlino",
   "repository": {
     "type": "git",
