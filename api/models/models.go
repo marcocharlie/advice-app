@@ -19,6 +19,10 @@ func (adr *AdviceRequestArgs) Validate() error {
 		return errors.New("please provide a topic")
 	}
 
+	if len(adr.Topic) < 3 {
+		return errors.New("please provide a keyword with at least 3 characters as a topic")
+	}
+
 	if isNegativeInt(adr.Amount) {
 		return errors.New("can't perform requests for negative amount")
 	}
