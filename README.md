@@ -1,5 +1,5 @@
 # advice-app
-A simple backend application showing Go implementation of JSON-RPC 2.0. A light frontend Node Js application for API consumption is offered.
+A simple backend application showing Go implementation of JSON-RPC 2.0. A light frontend Node.js application for API consumption is offered.
 
 In addition, a Redis local cache is implemented, data is refreshed every 5 minutes.
 
@@ -54,7 +54,7 @@ To start the application, run:
 make start-frontend
 ```
 
-The command will download Node Js image, get the dependencies, build the application and run it (in background).
+The command will download Node.js image, get the dependencies, build the application and run it (in background).
 
 Once the app starts, open `http://localhost:8080` in your browser, where you will be able to make requests to backend server (suggested quaries: `life`,`love`,`cars`,`spiders`,`wine`,`lover`,`smile`).
 
@@ -63,7 +63,7 @@ To stop the application just run `make stop-frontend`.
 ## Application structure
 
 The GO application structure is inspired by the [Standard Go Project Layout](https://github.com/golang-standards/project-layout).
-The Node Js application skeleton was created through the [express-generator](https://expressjs.com/it/starter/generator.html) tool.
+The Node.js application skeleton was created through the [express-generator](https://expressjs.com/it/starter/generator.html) tool.
 
 The application is structured as follows:
 
@@ -74,7 +74,7 @@ The application is structured as follows:
     - data: contains the logic to retrieve data from database (Redis).
     - internal: contains the internal logic.
     - models: contains the definitions of the entities involved.
-- app (frontend Node Js application):
+- app (frontend Node.js application):
     - the `package.json` file defines the application dependencies and other information.
     - bin: stores the application entry point `/bin/www` which sets up some error handling and then loads `app.js` to do the rest of the work. 
     - routes: stores the app routes.
