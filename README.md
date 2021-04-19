@@ -25,7 +25,7 @@ The command will download Go, Redis and Node.js images, get the dependencies, bu
 
 The backend web server will listen on port 5000.
 
-Once the app starts, open `http://localhost:8080` in your browser, where you will be able to make requests to backend server (suggested quaries: `life`,`love`,`cars`,`spiders`,`wine`,`lover`,`smile`).
+Once the app starts, open `http://localhost:8080` in your browser, where you will be able to make requests to backend server (suggested queries: `life`,`love`,`cars`,`spiders`,`wine`,`lover`,`smile`).
 
 To stop the application just run `make stop-app`.
 
