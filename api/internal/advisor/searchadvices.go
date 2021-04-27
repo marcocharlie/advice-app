@@ -11,7 +11,7 @@ import (
 	"github.com/marcocharlie/advice-app/api/models"
 )
 
-// GetAdvice returns an AdviceResponse, if presente, or error otherwise
+// GetAdvice returns an AdviceResponse, if present, or error otherwise
 func GetAdvice(redisClient *redis.Client, adviceRequest *models.AdviceRequestArgs) (*models.AdviceResponse, error) {
 
 	advicesCache := cache.NewAdvicesCache(
@@ -28,7 +28,7 @@ func GetAdvice(redisClient *redis.Client, adviceRequest *models.AdviceRequestArg
 		return nil, err
 	}
 
-	// get topic advice from local cache, if present
+	// get topic advice from cache, if present
 	adviceList, err = advicesCache.GetTopicAdvicesCache(adviceRequest.Topic)
 	if err != nil {
 		if err == redis.Nil {
